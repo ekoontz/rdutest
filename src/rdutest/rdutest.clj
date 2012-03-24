@@ -62,10 +62,16 @@
 (def rdutests
   {:simple-test-example ; test label
    (rdutest
-    "Just a simple example showing how to write rdutests." ; comment
+    "Just a simple passing test." ; comment
     (+ 2 3)  ; expression to evaluate.
     #(= % 5) ; function to be applied to the evaluated expression.
-    :simple-test-example)}) ; repeat of label (unfortunately)
-
+    ;; repeat of label (unfortunately)
+    :simple-test-example)
+   :simple-failing-example
+   (rdutest
+    "Too bad - this test failed."
+    (+ 2 3)  ; expression to evaluate.
+    #(= % 4) ; function to be applied to the evaluated expression.
+    :simple-failing-example)}) ; repeat of label (unfortunately)
 
     

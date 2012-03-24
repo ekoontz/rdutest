@@ -1,0 +1,35 @@
+# rdutest
+
+A simple test framework
+
+## Usage
+
+user=> (load "rdutest")
+user=> (ns user (:use [rdutest]))
+
+simplest passing test:
+
+  (rdutest "trivial pass" true (fn [result] (= result true)) :trivial-pass)
+
+simplest failing test:
+
+  (rdutest "trivial fail" true (fn [result] (= result false)) :trivial-fail)
+
+a bit less simple usage:
+  (rdutest "addition" (+ 1 3) (fn [result] (= result 4)) :addition)
+ 
+arguments:
+  1. string to be printed for humans
+  2. test to be run
+  3. function to apply to result of 2.
+  4. key (redundant with 1; needs to be removed.)
+
+running tests repeatedly:
+
+  (repeatedly 3 #(rdutest "trivial pass" true (fn [result] (= result true)) :trivial-pass))
+
+## License
+
+Copyright (C) 2012 Eugene Koontz
+
+Distributed under the Eclipse Public License, the same as Clojure.
